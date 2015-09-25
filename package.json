@@ -1,0 +1,24 @@
+{
+  "name": "countries-capitals-app",
+  "version": "1.0.0",
+  "description": "a list of countries and information on their capital cities",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-connect": "^2.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bonnichiwa/countries-capitals-app.git"
+  },
+  "author": "Bonnie Pham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bonnichiwa/countries-capitals-app/issues"
+  },
+  "homepage": "https://github.com/bonnichiwa/countries-capitals-app#readme"
+}
