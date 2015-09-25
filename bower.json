@@ -1,0 +1,23 @@
+{
+  "name": "countries-and-capitals",
+  "version": "0.0.0",
+  "homepage": "https://github.com/bonnichiwa/countries-and-capitals",
+  "authors": [
+    "bonnichiwa <bonnie.pham@ryerson.ca>"
+  ],
+  "description": "a list of countries and information on their capital cities",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.6",
+    "angular-route": "~1.4.6"
+  }
+}
