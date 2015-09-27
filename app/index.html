@@ -1,5 +1,5 @@
-<<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" ng-app="cncApp">
 <head>
   <meta charset="UTF-8">
   <title>Countries and Capitals</title>
@@ -7,6 +7,18 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <script type="text/javascript" src="app.js"></script>
+
+  <header>
+    <h1>Welcome to Countries and Capitals</h1>
+  </header>
+
+  <div ng-view></div>
+
+  
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
