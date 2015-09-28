@@ -5,12 +5,12 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
         controller : 'HomeCtrl'
     })
     .when('/countries', {
-      templateUrl : 'countries.html' ,
-      controller : 'CountryCtrl'
+      templateUrl : 'countries.html' 
+      // controller : 'CountryCtrl'
     })
-    .when('/countries/:country/capital', {
-      templateUrl : 'capital.html',
-      controller : 'CapitalCtrl'
+    .when('/countries/:country', {
+      templateUrl : 'capital.html'
+      // controller : 'CountryCtrl'
     })
   }])
 
@@ -18,15 +18,19 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
       //empty for now
   })
 
-  .controller('CountryCtrl', function($scope, $http) {
+  .controller('CountryCtrl', function($scope, $http, $routeParams) {
+    // $scope.country = $routeParams.country;
+
     $scope.countryList = function() {
       var request = {
+        username: "bonnichiwa",
         callback: "JSON_CALLBACK"
       };
 
       $http({
         method: 'JSONP',
-        url: "http://api.geonames.org/countryInfoJSON?username=bonnichiwa",
+        cache: true,  
+        url: "http://api.geonames.org/countryInfoJSON?",
         params: request
       })
       .then(function(result) {
@@ -37,9 +41,55 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
       function(error) {
         alert('Error: Unable to retrieve countries.');
       })
-    };
+    }
+
+
+      
+    $scope.countryInfo = function(countryCode) {
+
+      $routeParams.country = countryCode;
+
+      var request = {
+        country: countryCode,
+        callback: "JSON_CALLBACK"
+      };
+
+      $http({
+        method: 'JSONP',
+        url: "http://api.geonames.org/countryInfoJSON?username=bonnichiwa",
+        params: request
+      })
+      .then(function(result) {
+        $scope.capital = result.data.geonames;
+        console.log("Found capital");
+        console.log(result);
+      },
+      function(error) {
+        alert('Error: Unable to retrieve capital.');
+      })
+    }
   })
 
-  .controller('CapitalCtrl', function($scope) {
-    //empty for now
+  .controller('CapitalCtrl', function($scope, $http) {
+    // $scope.countryInfo = function(countryCode) {
+
+    //   var request = {
+    //     country: countryCode,
+    //     callback: "JSON_CALLBACK"
+    //   };
+
+    //   $http({
+    //     method: 'JSONP',
+    //     url: "http://api.geonames.org/countryInfoJSON?username=bonnichiwa",
+    //     params: request
+    //   })
+    //   .then(function(result) {
+    //     $scope.capital = result.data.geonames;
+    //     console.log("Found capital");
+    //     console.log(result);
+    //   },
+    //   function(error) {
+    //     alert('Error: Unable to retrieve capital.');
+    //   })
+    // }
   });
