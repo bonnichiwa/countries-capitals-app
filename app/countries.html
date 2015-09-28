@@ -1,3 +1,9 @@
 <h1>Countries</h1>
 
+<button ng-click="countryList()">Generate</button>
+
+<div ng-repeat="country in countries">
+  <p>{{country.countryName}}</p>
+</div>
+
 <button onclick="window.location.href='#/'">Home</button>

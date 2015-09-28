@@ -17,9 +17,29 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
   .controller('HomeCtrl', function($scope) {
       //empty for now
   })
-  .controller('CountryCtrl', function($scope) {
-    //empty for now
+
+  .controller('CountryCtrl', function($scope, $http) {
+    $scope.countryList = function() {
+      var request = {
+        callback: "JSON_CALLBACK"
+      };
+
+      $http({
+        method: 'JSONP',
+        url: "http://api.geonames.org/countryInfoJSON?username=bonnichiwa",
+        params: request
+      })
+      .then(function(result) {
+        $scope.countries = result.data.geonames;
+        console.log("Found countries");
+        console.log(result);
+      },
+      function(error) {
+        alert('Error: Unable to retrieve countries.');
+      })
+    };
   })
+
   .controller('CapitalCtrl', function($scope) {
     //empty for now
   });
