@@ -45,9 +45,9 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
     //Capital City Info  
     $scope.countryInfo = function(countryCode, geonameId) {
 
-      neighboursInfo(geonameId);
-
       $routeParams.country = countryCode;
+
+      neighboursInfo(geonameId);
 
       var request = {
         country: countryCode,
@@ -61,6 +61,7 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
       })
       .then(function(result) {
         $scope.capital = result.data.geonames;
+        $scope.capitalImg = result.data.geonames[0].countryCode.toLowerCase();
         console.log("Found capital");
         console.log(result);
       },

@@ -1,6 +1,9 @@
 body {
+  font-family: 'Oswald';
+  font-weight: 300;
   text-align: center;
   margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 p {
@@ -11,8 +14,10 @@ p {
 }
 
 table {
+  margin-top: 2em;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 2em;
 }
 
 td {
@@ -22,6 +27,7 @@ td {
 th {
   text-align: center;
   border: 1px solid black;
+  padding: 10px;
 }
 
 table,
@@ -30,3 +36,25 @@ td {
   border: 1px solid black;
   text-align: left;
 }
+
+#name, #intro {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+#flag, #map {
+  height: 10em;
+  vertical-align: middle;
+  margin: 3em;
+}
+
+button {
+  padding: 2em;
+  margin: 2em;
+  font-family: 'Oswald';
+}
+
+button:hover {
+  cursor: pointer;
+}
+

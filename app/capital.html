@@ -1,9 +1,15 @@
-<h1>{{capital[0].countryName}}</h1>
+<h1 id="name">{{capital[0].countryName}}</h1>
 
-<p>Population of Country: {{capital[0].population | number}} </p>
-<p>Area: {{capital[0].areaInSqKm | number}} km2 </p>
-<p>Capital: {{capital[0].capital}}</p>
-<p>Neighbours: <span ng-repeat="neighbour in neighbours">{{neighbour.countryName}}, </span></p>
+<p><strong>Population of Country:</strong> {{capital[0].population | number}} </p>
+<p><strong>Area:</strong> {{capital[0].areaInSqKm | number}} km2 </p>
+<p><strong>Capital:</strong> {{capital[0].capital}}</p>
+<p><strong>Neighbours:</strong> <span ng-repeat="neighbour in neighbours">{{neighbour.countryName}}, </span></p>
 
-<button onclick="window.location.href='#/'">Home</button>
-<button onclick="window.location.href='#/countries'">Browse Countries</button>
+<img id="flag" src="http://www.geonames.org/flags/x/{{capitalImg}}.gif" />
+
+<img id="map" src="http://www.geonames.org/img/country/250/{{capital[0].countryCode}}.png" />
+
+<br>
+
+<button onclick="window.location.href='#/'">HOME</button>
+<button onclick="window.location.href='#/countries'">BROWSE COUNTRIES</button>
