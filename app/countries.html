@@ -2,8 +2,23 @@
 
 <button ng-click="countryList()">Generate</button>
 
-<div ng-repeat="country in countries">
-  <p>{{country.countryName}}</p>
-</div>
+<table>
+  <tr>
+    <th>Country</th>
+    <th>Code</th>
+    <th>Capital</th>
+    <th>Area in Sq. Km</th>
+    <th>Population</th>
+    <th>Continent</th>
+  </tr>
+  <tr ng-repeat="country in countries">
+    <td>{{country.countryName}}</td>
+    <td>{{country.countryCode}}</td>
+    <td>{{country.capital}}</td>
+    <td>{{country.areaInSqKm}}</td>
+    <td>{{country.population}}</td>
+    <td>{{country.continentName}}</td>
+  </tr>
+</table>
 
 <button onclick="window.location.href='#/'">Home</button>
