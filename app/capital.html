@@ -5,7 +5,7 @@
 <p><strong>Capital:</strong> {{capital[0].capital}}</p>
 <p><strong>Neighbours:</strong>   
   <span ng-repeat="neighbour in neighbours"> 
-    <a href="#/countries/:country" ng-click="countryInfo(neighbour.countryCode, neighbour.geonameId)"> {{neighbour.countryName}}</a>
+    <a href="#/countries/country" ng-click="countryInfo(neighbour.countryCode, neighbour.geonameId)"> {{neighbour.countryName}}</a>
     , 
   </span>
 </p>

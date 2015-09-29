@@ -8,9 +8,8 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
       templateUrl : 'countries.html' 
       // controller : 'CountryCtrl'
     })
-    .when('/countries/:country', {
+    .when('/countries/country', {
       templateUrl : 'capital.html'
-      // controller : 'CountryCtrl'
     })
   }])
 
@@ -45,7 +44,7 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
     //Capital City Info  
     $scope.countryInfo = function(countryCode, geonameId) {
 
-      $routeParams.country = countryCode;
+      
 
       neighboursInfo(geonameId);
 
