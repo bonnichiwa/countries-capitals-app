@@ -7,14 +7,16 @@
   <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body ng-controller = "CountryCtrl">
+<body ng-controller = "CountryCtrl" ng-class="{loading: isLoading}">
 
   <header>
     <h1>Countries and Capitals</h1>
     <hr>
   </header>
 
-  <div ng-view></div>
+  <div class="animate-view-container">
+      <div ng-view class="animate-view"></div>
+  </div>
 
   
   <script src="bower_components/angular/angular.js"></script>

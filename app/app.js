@@ -1,4 +1,19 @@
 angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
+  
+  .run(function($rootScope, $location, $timeout) {
+    $rootScope.$on('$routeChangeError', function() {
+      $location.path('/error');
+    });
+    $rootScope.$on('$routeChangeStart', function() {
+      $rootScope.isLoading = true;
+    });
+    $rootScope.$on('$routeChangeSuccess', function() {
+      $timeout(function() {
+        $rootScope.isLoading = false;
+      }, 1500);
+    });    
+  })
+
   .config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/', {
         templateUrl : 'home.html',
@@ -6,11 +21,14 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
     })
     .when('/countries', {
       templateUrl : 'countries.html' 
-      // controller : 'CountryCtrl'
     })
     .when('/countries/country', {
-      templateUrl : 'capital.html'
+      templateUrl : 'capital.html',
     })
+    .when('/error', {
+      template : '<h1>Error - Page Not Found</h1>'
+    })
+    .otherwise('/error');
   }])
 
   .controller('HomeCtrl', function($scope) {
@@ -94,5 +112,3 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
   }
 })
 
-  .controller('CapitalCtrl', function($scope, $http) {
-  });

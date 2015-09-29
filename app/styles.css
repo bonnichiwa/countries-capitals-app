@@ -1,9 +1,64 @@
+/* Loading animation */
+
+body, html {
+  margin:0;
+  padding:0;
+  position:relative;
+  height:100%;
+  padding-top:10px;
+}
+.loading {
+  position:relative;
+  height:100%;
+}
+.loading:before {
+  position:absolute;
+  content:"";
+  left:0;
+  bottom:0;
+  right:0;
+  top:0;
+  z-index:1000;
+  background:rgba(255,255,255,0.9) no-repeat center center;
+  background-image: url('images/globe_loading.gif');
+}
+.animate-view-container { position:relative; min-height: 100%; }
+.animate-view.ng-enter,
+.animate-view.ng-leave {
+    transition:2s linear all;
+    position:absolute;
+    top:-0.5em;
+    left:0;
+    right:0;
+    bottom:0;
+}
+.animate-view.ng-enter { right: -500em; z-index:100; }
+.animate-view.ng-enter.ng-enter-active { right: 0; }
+.animate-view.ng-leave { opacity:1; z-index:99; }
+.animate-view.ng-leave.ng-leave-active { opacity:0; }
+
+
+/*.country-table {
+  position: relative;
+  top: -2000em;
+}*/
+
+.country-table.ng-enter {
+  position: relative;
+  top: -2000em
+}
+
+.country-table.ng-enter.ng-enter-active {
+  position: relative;
+  top: 0;
+}
+
+/* Site styling */
+
 body {
   font-family: 'Oswald';
   font-weight: 300;
   text-align: center;
-  margin-top: 2em;
-  margin-bottom: 2em;
 }
 
 p {
