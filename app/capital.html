@@ -3,7 +3,12 @@
 <p><strong>Population of Country:</strong> {{capital[0].population | number}} </p>
 <p><strong>Area:</strong> {{capital[0].areaInSqKm | number}} km2 </p>
 <p><strong>Capital:</strong> {{capital[0].capital}}</p>
-<p><strong>Neighbours:</strong> <span ng-repeat="neighbour in neighbours">{{neighbour.countryName}}, </span></p>
+<p><strong>Neighbours:</strong>   
+  <span ng-repeat="neighbour in neighbours"> 
+    <a href="#/countries/:country" ng-click="countryInfo(neighbour.countryCode, neighbour.geonameId)"> {{neighbour.countryName}}</a>
+    , 
+  </span>
+</p>
 
 <img id="flag" src="http://www.geonames.org/flags/x/{{capitalImg}}.gif" />
 
