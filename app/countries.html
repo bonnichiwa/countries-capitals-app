@@ -10,7 +10,7 @@
     <th>Continent</th>
   </tr>
   <tr ng-repeat="country in countries">
-    <td><a href="#/countries/country" ng-click="countryInfo(country.countryCode, country.geonameId)">{{country.countryName}}</a></td>
+    <td><a href="#/countries/{{country.countryCode}}" ng-click="countryInfo(country.countryCode, country.geonameId)">{{country.countryName}}</a></td>
     <td>{{country.countryCode}}</td>
     <td>{{country.capital}}</td>
     <td>{{country.areaInSqKm | number}}</td>

@@ -20,10 +20,12 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
         controller : 'HomeCtrl'
     })
     .when('/countries', {
-      templateUrl : 'countries.html' 
+      templateUrl : 'countries.html', 
+      controller: 'CountryListCtrl'
     })
-    .when('/countries/country', {
+    .when('/countries/:countryName', {
       templateUrl : 'capital.html',
+      controller: 'CountryDetailCtrl'
     })
     .when('/error', {
       template : '<h1>Error - Page Not Found</h1>'
@@ -35,7 +37,7 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
       //empty for now
   })
 
-  .controller('CountryCtrl', function($scope, $http, $routeParams) {
+  .controller('CountryListCtrl', ['$scope', '$http', function($scope, $http) {
 
     //Countries List
     var request = {
@@ -57,17 +59,19 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
     function(error) {
       alert('Error: Unable to retrieve countries.');
     })
+  }])
 
+  .controller('CountryDetailCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+
+    $scope.countryCode = $routeParams.countryName;
+    console.log($scope.countryCode);
+
+    // neighboursInfo(geonameId);
 
     //Capital City Info  
-    $scope.countryInfo = function(countryCode, geonameId) {
-
-      
-
-      neighboursInfo(geonameId);
 
       var request = {
-        country: countryCode,
+        country: $scope.countryCode,
         callback: "JSON_CALLBACK"
       };
 
@@ -85,30 +89,29 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
       function(error) {
         alert('Error: Unable to retrieve capital.');
       })
-
     }
 
     //Neighbours 
-    var neighboursInfo = function(geonameId) {
-    var request = {
-      username: "bonnichiwa",
-      geonameId: geonameId,
-      callback: "JSON_CALLBACK"
-    };
+    // var neighboursInfo = function(geonameId) {
+    // var request = {
+    //   username: "bonnichiwa",
+    //   geonameId: geonameId,
+    //   callback: "JSON_CALLBACK"
+    // };
 
-    $http({
-      method: 'JSONP',
-      url: "http://api.geonames.org/neighboursJSON?",
-      params: request
-    })
-    .then(function(result) {
-      $scope.neighbours = result.data.geonames;
-      console.log("Found neighbours");
-      console.log(result);
-    },
-    function(error) {
-      alert('Error: Unable to find neighbours.');
-    })
-  }
-})
+    // $http({
+    //   method: 'JSONP',
+    //   url: "http://api.geonames.org/neighboursJSON?",
+    //   params: request
+    // })
+    // .then(function(result) {
+    //   $scope.neighbours = result.data.geonames;
+    //   console.log("Found neighbours");
+    //   console.log(result);
+    // },
+    // function(error) {
+    //   alert('Error: Unable to find neighbours.');
+    // })
+  // }
+])
 

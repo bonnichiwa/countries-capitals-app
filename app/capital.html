@@ -5,14 +5,14 @@
 <p><strong>Capital:</strong> {{capital[0].capital}}</p>
 <p><strong>Neighbours:</strong>   
   <span ng-repeat="neighbour in neighbours"> 
-    <a href="#/countries/country" ng-click="countryInfo(neighbour.countryCode, neighbour.geonameId)"> {{neighbour.countryName}}</a>
+    <a href="#/countries/{{neighbour.countryCode}}" ng-click="countryInfo(neighbour.countryCode, neighbour.geonameId)"> {{neighbour.countryName}}</a>
     , 
   </span>
 </p>
 
-<img id="flag" src="http://www.geonames.org/flags/x/{{capitalImg}}.gif" />
+<img id="flag" ng-src="http://www.geonames.org/flags/x/{{capitalImg}}.gif" />
 
-<img id="map" src="http://www.geonames.org/img/country/250/{{capital[0].countryCode}}.png" />
+<img id="map" ng-src="http://www.geonames.org/img/country/250/{{capital[0].countryCode}}.png" />
 
 <br>
 
