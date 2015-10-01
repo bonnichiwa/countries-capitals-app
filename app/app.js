@@ -83,35 +83,36 @@ angular.module('cncApp', ['ngRoute', 'ngAnimate', 'geolocation'])
       .then(function(result) {
         $scope.capital = result.data.geonames;
         $scope.capitalImg = result.data.geonames[0].countryCode.toLowerCase();
+        $scope.capitalGeo = result.data.geonames[0].geonameId;
         console.log("Found capital");
         console.log(result);
-      },
-      function(error) {
-        alert('Error: Unable to retrieve capital.');
-      })
-    }
 
-    //Neighbours 
-    // var neighboursInfo = function(geonameId) {
-    // var request = {
-    //   username: "bonnichiwa",
-    //   geonameId: geonameId,
-    //   callback: "JSON_CALLBACK"
-    // };
+        $http({
+          method: 'JSONP',
+          url: "http://api.geonames.org/neighboursJSON?",
+          params: {
+            username: "bonnichiwa",
+            geonameId: $scope.capitalGeo,
+            callback: "JSON_CALLBACK"
+          }
+        })
+        .then(function(result) {
+          $scope.neighbours = result.data.geonames;
+          console.log("Found neighbours");
+          console.log(result);
+        },
+        function(error) {
+          alert('Error: Unable to find neighbours.');
+        })
+          },
+        function(error) {
+          alert('Error: Unable to retrieve capital.');
+        })
+      }
 
-    // $http({
-    //   method: 'JSONP',
-    //   url: "http://api.geonames.org/neighboursJSON?",
-    //   params: request
-    // })
-    // .then(function(result) {
-    //   $scope.neighbours = result.data.geonames;
-    //   console.log("Found neighbours");
-    //   console.log(result);
-    // },
-    // function(error) {
-    //   alert('Error: Unable to find neighbours.');
-    // })
-  // }
+    // Neighbours 
+
+
+
 ])
 
